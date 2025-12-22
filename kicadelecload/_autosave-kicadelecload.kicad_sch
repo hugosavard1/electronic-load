@@ -5312,7 +5312,7 @@
 				)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 114.554 118.11 90)
 			(effects
 				(font

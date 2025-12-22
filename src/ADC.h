@@ -7,7 +7,7 @@ class ADC {
 
 public:
     int getValue();
-    int convert_ADC();
+    float convert_ADC();
     void update();
     ADC(int adc, int ref);
     void begin();
@@ -19,6 +19,11 @@ private:
     float _lastref;
     int _lastUpdate;
     int _interval = 10;
+
+    //pont diviseur
+    float _grosse_res = 20130;
+    float _petit_res = 1000;
+    float _rapport = _petit_res/(_petit_res + _grosse_res);
 };
 
 
