@@ -63,6 +63,6 @@ void loop() {
    }
   }
 pwm_pin.Ajuster_Tension(desired_tension);
-delay(500);
+delay(800);
 
 }

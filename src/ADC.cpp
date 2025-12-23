@@ -41,16 +41,16 @@ float ADC::convert_ADC() {
     //pont avec V -> 100k -> probe -> 5k1 -> GND
     //60V
 
-
-    float tension_mili = ((_lastValue * mv_per_bit)/_rapport);
+    float tension_lu = ((_lastValue * mv_per_bit)*0.9803f + 22.255f);
+    float tension_mili = (tension_lu/_rapport);
     float tension = tension_mili/1000.0f;
     
     
     //for conversion see excel file
     //return ((tension * 0.9797f) + 0.2469f); //for 10000 * 1000
     
-    return ((tension*0.9799) + 0.4458); //for 20000 * 1000
-
+    //return ((tension*0.9799) + 0.4458); //for 20000 * 1000
+    return tension_lu/1000;
 }
 
 //void ADC::update() {
@@ -65,7 +65,7 @@ void ADC::update() {
     if (millis() - _lastUpdate >= _interval) {
         long sumValue = 0;
         long sumRef = 0;
-        int numSamples = 64; // On lit 64 fois
+        int numSamples = 150; // On lit 64 fois
 
         for(int i = 0; i < numSamples; i++) {
             sumValue += analogRead(_pin);
